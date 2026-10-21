@@ -1,0 +1,230 @@
+/* ---------- Reset & base ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Nunito", "Segoe UI", Arial, sans-serif;
+  line-height: 1.5;
+  color: #1c1c1c;
+  background: #ffffff;
+}
+
+figure,
+blockquote,
+p {
+  margin: 0;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* ---------- Layout ---------- */
+.container {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 24px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.row {
+  display: flex;
+  gap: 24px;
+}
+
+.row > .card {
+  flex: 1;
+}
+
+/* ---------- Shared pieces ---------- */
+.card {
+  border-radius: 16px;
+}
+
+.author {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  object-fit: cover;
+  background: #ddd;
+}
+
+.name {
+  font-size: 1.1rem;
+}
+
+.role {
+  font-size: 0.8rem;
+}
+
+/* ---------- Card 1: speech bubble (uses absolute positioning) ---------- */
+.card-bubble {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.bubble {
+  position: relative;
+  background: #1c1c1c;
+  color: #ffffff;
+  padding: 16px;
+  border-radius: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* the little tail pointing down to the avatar */
+.bubble::after {
+  content: "";
+  position: absolute;
+  left: 34px;
+  bottom: -10px;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 10px solid #1c1c1c;
+}
+
+.card-bubble .author {
+  padding-left: 8px;
+}
+
+/* ---------- Card 2: outlined card ---------- */
+.card-outline {
+  border: 1.5px solid #1c1c1c;
+  padding: 24px 18px 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+/* ---------- Card 3: photo + dark card with rating ---------- */
+.card-feature {
+  display: flex;
+  gap: 12px;
+  border-radius: 0;
+}
+
+.feature-photo {
+  width: 242px;
+  height: 242px;
+  flex-shrink: 0;
+  border-radius: 14px;
+  object-fit: cover;
+}
+
+.feature-body {
+  flex: 1;
+  background: #1c1c1c;
+  color: #ffffff;
+  padding: 24px 30px;
+  border-radius: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.stars {
+  color: #f5c518;
+  font-size: 1.4rem;
+  letter-spacing: 2px;
+  line-height: 1;
+}
+
+.feature-name {
+  font-size: 1.6rem;
+  line-height: 1.2;
+}
+
+.feature-role {
+  color: #8a8a8a;
+  margin-bottom: 14px;
+}
+
+/* ---------- Card 4: carousel-style card ---------- */
+.card-carousel {
+  border: 1.5px solid #1c1c1c;
+  padding: 40px 60px 28px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 28px;
+}
+
+.carousel-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+}
+
+.arrow {
+  border: none;
+  background: none;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  padding: 8px;
+}
+
+.thumb {
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.thumb-side {
+  width: 46px;
+  height: 46px;
+  opacity: 0.45;
+}
+
+.thumb-active {
+  width: 60px;
+  height: 60px;
+}
+
+/* ---------- Responsive: stack cards on small screens ---------- */
+@media (max-width: 640px) {
+  .row {
+    flex-direction: column;
+  }
+
+  .card-feature {
+    flex-direction: column;
+  }
+
+  .feature-photo {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1 / 1;
+  }
+
+  .card-carousel {
+    padding: 28px 20px 24px;
+  }
+}
